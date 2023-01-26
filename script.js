@@ -53,3 +53,5 @@ window.addEventListener("DOMContentLoaded", () =>{
     }, 1000);
   }, 1500);
 });
+
+const msm = alert("Websayt test rejimida ishlamoqda. Ma'lumotlar 'Lorem' yordamida to'ldirilgan!")
