@@ -50,8 +50,8 @@ window.addEventListener("DOMContentLoaded", () =>{
     loader.style.opocity = "0";
     setTimeout( function () {
       loader.style.display = "none";
-    }, 500);
-  }, 1000);
+    }, 1000);
+  }, 1500);
 });
 
 // const msm = alert("Websayt test rejimida ishlamoqda. Ma'lumotlar 'Lorem' yordamida to'ldirilgan!")
