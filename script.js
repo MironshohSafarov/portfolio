@@ -50,8 +50,11 @@ window.addEventListener("DOMContentLoaded", () =>{
     loader.style.opocity = "0";
     setTimeout( function () {
       loader.style.display = "none";
-    }, 1000);
-  }, 1500);
+    }, 500);
+  }, 1000);
 });
 
-const msm = alert("Websayt test rejimida ishlamoqda. Ma'lumotlar 'Lorem' yordamida to'ldirilgan!")
+// const msm = alert("Websayt test rejimida ishlamoqda. Ma'lumotlar 'Lorem' yordamida to'ldirilgan!")
+
+// const username = prompt("Please enter your name", "your name");
+// alert(`"Welcome" ${username}`)
