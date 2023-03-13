@@ -54,6 +54,32 @@ window.addEventListener("DOMContentLoaded", () =>{
   }, 1500);
 });
 
+// Get the current view count 
+var viewCount = localStorage.getItem('viewCount'); 
+ 
+// If this is the first time the page has been loaded, initialize the count to 1 
+if (!viewCount) { 
+  viewCount = 1; 
+} else { 
+  viewCount = parseInt(viewCount) + 1; 
+} 
+// Check if the view count is already present in local storage
+var views = localStorage.getItem('views');
+
+if (!views) {
+  // If not, initialize the view count to 0
+  views = 0;
+}
+
+// Update the view count on the page
+var viewCountElement = document.getElementById('view-count');
+viewCountElement.innerHTML = views + ' views';
+
+// Increment the view count and store it in local storage
+views++;
+localStorage.setItem('views', views);
+
+
 // const msm = alert("Websayt test rejimida ishlamoqda. Ma'lumotlar 'Lorem' yordamida to'ldirilgan!")
 
 // const username = prompt("Please enter your name", "your name");
