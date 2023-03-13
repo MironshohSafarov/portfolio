@@ -66,18 +66,44 @@ if (!viewCount) {
 // Check if the view count is already present in local storage
 var views = localStorage.getItem('views');
 
-if (!views) {
-  // If not, initialize the view count to 0
-  views = 0;
+function incrementViewCount() {
+  var viewCount = getCookie("viewCount");
+  if (viewCount) {
+    viewCount = parseInt(viewCount) + 1;
+  } else {
+    viewCount = 1;
+  }
+  setCookie("viewCount", viewCount, 365);
+  
+  var viewText = "view";
+  if (viewCount > 1) {
+    viewText = "views";
+  }
+  
+  document.getElementById("viewCount").innerHTML = viewCount + " " + viewText;
 }
 
-// Update the view count on the page
-var viewCountElement = document.getElementById('view-count');
-viewCountElement.innerHTML = views + ' views';
+function setCookie(name, value, days) {
+  var expires = "";
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + value + expires + "; path=/";
+}
 
-// Increment the view count and store it in local storage
-views++;
-localStorage.setItem('views', views);
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
 
 
 // const msm = alert("Websayt test rejimida ishlamoqda. Ma'lumotlar 'Lorem' yordamida to'ldirilgan!")
