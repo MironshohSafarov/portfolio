@@ -54,59 +54,24 @@ window.addEventListener("DOMContentLoaded", () =>{
   }, 1500);
 });
 
-// Get the current view count 
-var viewCount = localStorage.getItem('viewCount'); 
- 
-// If this is the first time the page has been loaded, initialize the count to 1 
-if (!viewCount) { 
-  viewCount = 1; 
-} else { 
-  viewCount = parseInt(viewCount) + 1; 
-} 
-// Check if the view count is already present in local storage
-var views = localStorage.getItem('views');
-
-function incrementViewCount() {
-  var viewCount = getCookie("viewCount");
-  if (viewCount) {
-    viewCount = parseInt(viewCount) + 1;
-  } else {
-    viewCount = 1;
-  }
-  setCookie("viewCount", viewCount, 365);
-  
-  var viewText = "view";
-  if (viewCount > 1) {
-    viewText = "views";
-  }
-  
-  document.getElementById("viewCount").innerHTML = viewCount + " " + viewText;
+//////////////////
+const countEl = document.getElementById(viewCount);
+counter();
+function counter() {
+  fetch("https://api.countapi.xyz/update/laptop/mouse/?amount=1")
+  .then( (res) => res.json())
+  .then( (res) => {
+    CSSCounterStyleRule.innerHTML = res.value;
+  });
 }
 
-function setCookie(name, value, days) {
-  var expires = "";
-  if (days) {
-    var date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    expires = "; expires=" + date.toUTCString();
-  }
-  document.cookie = name + "=" + value + expires + "; path=/";
-}
+// for Title : 
 
-function getCookie(name) {
-  var nameEQ = name + "=";
-  var ca = document.cookie.split(';');
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-  }
-  return null;
-}
+let docTitle = document.title;
+window.addEventListener("blur", () => {
+  document.title = "Come Back :(" ;
+});
 
-
-
-// const msm = alert("Websayt test rejimida ishlamoqda. Ma'lumotlar 'Lorem' yordamida to'ldirilgan!")
-
-// const username = prompt("Please enter your name", "your name");
-// alert(`"Welcome" ${username}`)
+window.addEventListener("focus", () => {
+  document.title = docTitle;
+});
