@@ -42,17 +42,16 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     }
   });
+  const loader = document.querySelector(".loader");
+  setTimeout(function () {
+    loader.style.opocity = "0";
+    setTimeout( function () {
+      loader.style.display = "none";
+    }, 100);
+  }, 200);
 });
 
-// window.addEventListener("DOMContentLoaded", () =>{
-//   const loader = document.querySelector(".loader");
-//   setTimeout(function () {
-//     loader.style.opocity = "0";
-//     setTimeout( function () {
-//       loader.style.display = "none";
-//     }, 100);
-//   }, 200);
-// });
+
 
 //////////////////
 // const countEl = document.getElementById(viewCount);
